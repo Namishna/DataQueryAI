@@ -11,12 +11,12 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
-logger = logging.getLogger(_name_)
+logger = logging.getLogger("data")
 
 class DataAnalyzer:
     """Handles data analysis and query processing."""
     
-    def _init_(self):
+    def __init__(self):
         self.keywords = {
             'max': self._get_max,
             'min': self._get_min,
@@ -131,7 +131,7 @@ def create_streamlit_app():
     st.set_page_config(page_title="DataQuery AI", page_icon="📊", layout="wide")
     
     st.title("📊 DataQuery AI - Simple Data Analysis")
-    st.write("""
+    st.write(""" 
     Upload your CSV file and ask questions about your data in natural language!
     
     Example questions:
@@ -140,7 +140,7 @@ def create_streamlit_app():
     - What is the average of [column]?
     - How many values in [column] are greater than 100?
     """)
-
+    
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     
     if uploaded_file is not None:
@@ -171,5 +171,6 @@ def create_streamlit_app():
         except Exception as e:
             st.error(f"Error loading file: {str(e)}")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     create_streamlit_app()
+
